@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팍스탁구클럽 점수 순위</title>
+    <style>
+        /* 전체 페이지 스타일 */
+        body {
+            background: linear-gradient(120deg, #f8f9fa, #e9ecef);  /* 고급스러운 그라디언트 배경 */
+            font-family: 'Roboto', sans-serif;  /* 세련된 폰트 사용 */
+            color: #343a40;  /* 기본 텍스트 색상 */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* 테이블 스타일 */
+        table {
+            margin: 20px auto;  /* 여백 추가 */
+            border-collapse: collapse;  /* 경계선 겹침 방지 */
+            width: 90%;  /* 화면에 맞게 테이블 크기 조정 */
+            max-width: 800px;  /* 최대 너비 설정 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* 그림자 효과 */
+            border-radius: 10px;  /* 모서리 둥글게 */
+            overflow: hidden;  /* 테이블 내 둥근 모서리 유지 */
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;  /* 연한 테두리 */
+            padding: 12px;  /* 셀 안쪽 여백 */
+            text-align: center;  /* 텍스트 중앙 정렬 */
+        }
+
+        th {
+            background-color: #495057;  /* 어두운 헤더 색상 */
+            color: #ffffff;  /* 헤더 글자색 */
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;  /* 짝수 행 색상 */
+        }
+
+        tr:hover {
+            background-color: #dee2e6;  /* 행에 마우스를 올렸을 때 색상 변경 */
+        }
+
+        h1 {
+            color: #495057;  /* 제목 색상 */
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #6c757d;  /* 부제목 색상 */
+            font-size: 1.2em;
+        }
+
+        /* 상단 이미지 스타일 */
+        .header-image {
+            width: 80px;  /* 작은 이미지 크기 */
+            height: 80px;  /* 동그란 이미지 */
+            margin-bottom: 20px;
+            border-radius: 50%;  /* 둥근 이미지 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* 그림자 효과 */
+        }
+
+        /* 검색창 컨테이너 */
+        #search-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        #search-container input {
+            width: 150px;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        #search-container button {
+            padding: 8px 12px;
+            border: none;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+
+        #search-container button:hover {
+            background-color: #0056b3;  /* 버튼 호버 색상 */
+        }
+
+        #search-description {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        /* 하이라이트 스타일 */
+        .highlight {
+            border: 2px solid #dc3545;  /* 빨간색 테두리 */
+            padding: 5px;
+            border-radius: 5px;
+            background-color: #ffeeba;  /* 연한 노란 배경 */
+            font-weight: bold;
+        }
+
+        /* 모바일 최적화 */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;  /* 모바일에서 제목 크기 조정 */
+            }
+
+            h2 {
+                font-size: 1em;  /* 부제목 크기 조정 */
+            }
+
+            #search-container {
+                top: 20px;
+                right: 10px;
+                padding: 10px;
+                width: 90%;  /* 화면에 맞는 검색창 크기 */
+            }
+
+            #search-container input {
+                width: 70%;  /* 입력창 크기 조정 */
+            }
+
+            #search-container button {
+                width: 25%;  /* 버튼 크기 조정 */
+            }
+
+            .header-image {
+                width: 60px;  /* 이미지 크기 조정 */
+                height: 60px;
+            }
+
+            table {
+                width: 100%;  /* 테이블 너비 조정 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 상단에 이미지 추가 -->
+    <img src="{{ url_for('static', filename='fox1.WEBP') }}" class="header-image" alt="Fox Image">
+    
+    <h1>팍스탁구클럽 점수 순위</h1>
+    <h2>최근 업데이트 시간 : 2024/12/22 오후 11:22</h2>
+
+    <!-- 검색창 추가 -->
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="이름 검색" />
+        <button id="search-btn">검색</button>
+        <div id="search-description">해당 검색창에 검색하고 싶은 선수의 이름을 입력하면<br>더욱 빨리 찾을 수 있습니다</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>등수</th>
+            <th>이름</th>
+            <th>점수</th>
+        </tr>
+        {% for rank, name, score in ranked_scores %}
+        <tr>
+            <td>{{ rank }}</td>
+            <td>{{ name }}</td>
+            <td>{{ score }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <script>
+        const searchBtn = document.getElementById('search-btn');
+        const searchInput = document.getElementById('search-input');
+
+        searchBtn.addEventListener('click', () => {
+            const searchTerm = searchInput.value.trim();
+            if (!searchTerm) {
+                alert('이름을 입력하세요!');
+                return;
+            }
+
+            // 기존 하이라이트 제거
+            const highlighted = document.querySelectorAll('.highlight');
+            highlighted.forEach(el => {
+                const parent = el.parentNode;
+                parent.replaceChild(document.createTextNode(el.textContent), el);
+            });
+
+            // 검색어 찾기
+            const tableCells = document.querySelectorAll('td:nth-child(2)'); // 이름 열만 선택
+            let found = false;
+
+            tableCells.forEach(cell => {
+                if (cell.textContent.includes(searchTerm)) {
+                    const regex = new RegExp(`(${searchTerm})`, 'gi');
+                    cell.innerHTML = cell.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+
+                    const firstHighlight = cell.querySelector('.highlight');
+                    if (firstHighlight) {
+                        firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert('검색 결과가 없습니다.');
+            }
+        });
+    </script>
+</body>
+</html>
