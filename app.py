@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')  # static 폴더 경로 설정
 
 @app.route('/')
 def home():
