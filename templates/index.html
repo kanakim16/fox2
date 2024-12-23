@@ -155,6 +155,7 @@
 <body>
     <!-- 상단에 이미지 추가 -->
     <img src="{{ url_for('static', filename='fox1.JPG') }}" class="header-image" alt="Fox Image">
+
     
     <h1>팍스탁구클럽 점수 순위</h1>
     <h2>최근 업데이트 시간 : 2024/12/22 오후 11:22</h2>
@@ -221,5 +222,9 @@
             }
         });
     </script>
+        
+        <a href="{{ url_for('static', filename='test.txt') }}">테스트 텍스트 파일</a>
 </body>
 </html>
+
+
