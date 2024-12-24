@@ -1,6 +1,10 @@
+from flask import Flask, render_template
+
+app = Flask(__name__, static_folder='static')  # static 폴더 경로 설정
+
 @app.route('/')
 def home():
-    # N명의 친구와 점수 및 전적
+    # N명의 친구와 점수 전적
     players = [
         {'name': '은혜', 'score': 63, 'record': '5승 3패'},
         {'name': '원일', 'score': 30, 'record': '2승 6패'},
