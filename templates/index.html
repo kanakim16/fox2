@@ -59,9 +59,9 @@
 
         /* 상단 이미지 스타일 */
         .header-image {
-            width: 120px;  /* 작은 이미지 크기 */
-            height: 120px;  /* 동그란 이미지 */
-            margin-bottom: 20px;
+            width: 200px;  /* 작은 이미지 크기 */
+            height: 200px;  /* 동그란 이미지 */
+            margin-bottom: 50px;
             border-radius: 50%;  /* 둥근 이미지 */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* 그림자 효과 */
         }
@@ -155,11 +155,9 @@
     <!-- 상단에 이미지 추가 -->
     <img src="{{ url_for('static', filename='fox1.jpg') }}" class="header-image" alt="fish Image">
 
-
-
-    
     <h1>팍스탁구클럽 랭킹</h1>
-    <h2>최근 업데이트 시간 : 2024/12/22 오후 11:22</h2>
+    <!-- Last Modified: 2024-12-24 00:00:00 -->
+    <h2>최근 업데이트 시간 : <span id="last-modified-time"></span></h2>
 
     <!-- 검색창 설명문구 추가 -->
     <div id="search-description">
@@ -227,7 +225,5 @@
             }
         });
     </script>
-        
-
 </body>
 </html>
