@@ -6,7 +6,7 @@ app = Flask(__name__, static_folder='static')  # static 폴더 경로 설정
 def home():
     # N명의 친구와 점수 및 전적
     players = {
-        '은혜': {'score': 63, 'record': '5승 3패'},
+        '은혜': {'score': 301, 'record': '5승 3패'},
         '원일': {'score': 30, 'record': '2승 8패'},
         '혜원': {'score': 100, 'record': '9승 1패'},
         '쌍두': {'score': 101, 'record': '8승 2패'},
