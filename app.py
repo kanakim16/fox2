@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template
 
 app = Flask(__name__, static_folder='static')  # static 폴더 경로 설정
@@ -17,7 +18,7 @@ def home():
         '만두': {'score': 165, 'record': '11승 4패'},
         '현지': {'score': 125, 'record': '7승 7패'},
     }
-
+    
     # 점수를 기준으로 내림차순 정렬하여 등수 추가
     sorted_players = sorted(players.items(), key=lambda x: x[1]['score'], reverse=True)
     ranked_players = [
