@@ -7,18 +7,7 @@ app = Flask(__name__, static_folder='static')  # static 폴더 경로 설정
 def home():
     # N명의 친구와 점수 및 전적
     players = {
-        '은혜': {'score': 301, 'record': '5승 3패'},
-        '원일': {'score': 30, 'record': '2승 8패'},
-        '혜원': {'score': 100, 'record': '9승 1패'},
-        '쌍두': {'score': 101, 'record': '8승 2패'},
-        '금자': {'score': 300, 'record': '15승 5패'},
-        '미선': {'score': 24, 'record': '1승 9패'},
-        '익완': {'score': 111, 'record': '10승 5패'},
-        '양두': {'score': 205, 'record': '12승 3패'},
-        '만두': {'score': 165, 'record': '11승 4패'},
-        '현지': {'score': 125, 'record': '7승 7패'},
-        '은혜1호': {'score': 302, 'record': '7승 7패'},
-        '은혜52호': {'score': 304, 'record': '7승 7패'},
+        '김원일(6)': {'score': 1000, 'record': '0승 0패'},
     }
     
     # 점수를 기준으로 내림차순 정렬하여 등수 추가
